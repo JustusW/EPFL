@@ -8,9 +8,9 @@ class HomeRoot(epfl.components.CardinalLayout):
     def init_struct(self):
         for x in range(0, 10):
             node_list = []
-            for y in range(0, 100):
+            for y in range(0, 10):
                 sub_node_list = []
-                for z in range(0, 1):
+                for z in range(0, 10):
                     sub_node_list.append(epfl.components.Box(
                         title='Box %s in Box %s in Box %s' % (z, y, x)
                     ))
@@ -26,4 +26,4 @@ class HomeRoot(epfl.components.CardinalLayout):
 
 @view_config(route_name='home')
 class HomePage(epfl.Page):
-    root_node = HomeRoot(constrained=True, node_list=[epfl.components.Box(title="Welcome to EPFL!")])
+    root_node = HomeRoot(constrained=True)
