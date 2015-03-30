@@ -25,3 +25,17 @@ Mache ich etwas offensichtliches falsch, indem ich render funktionen von externe
 und damit rekursive Systeme ermögliche?
 Gibt es Möglichkeiten diese Renderaufrufe entweder zu beschleunigen oder abzuflachen?
 Ist es realistisch die genannte Menge an Daten durch die genannte Menge an Templates zu rendern?
+
+Die Ausgabe auf der Kommandozeile ist symptomatisch für die Schwierigkeiten beim genauen profilen des Problems:
+===================================================================
+| render calls total             | 2222                           |
+| render time total              | 0.914024114609                 |
+| render time per call           | 0.000411351986773              |
+| render_templates calls total   | 2220                           |
+| render_templates time total    | 1.69764232635                  |
+| render_templates time per call | 0.00076470375061               |
+| __init__ time total            | 0.000378847122192              |
+| __call__ time total            | 1.30725979805                  |
+===================================================================
+render_templates wird rekursiv ausgeführt, dadurch ist es nicht einfach zu sagen wo jetzt überhaupt Zeit liegen bleibt.
+Insbesondere die in Jinja2 ablaufenden Prozesse sind de facto nicht zu profilen.
